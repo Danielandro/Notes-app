@@ -1,4 +1,5 @@
 (function(exports) {
+  
   function NoteList() {
     this.list = [];
   };
