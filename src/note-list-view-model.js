@@ -1,18 +1,14 @@
-function(exports) {
+(function(exports) {
   function NoteListView(noteList) {
     this.noteList = noteList;
-  }
-  NoteListView.prototype.convertListHTML = function() {
-    
-    var htmlString = "<ul>";
+  };
 
-    this.noteList.forEach(function(note) {
-      var noteInHtml = `<li><div>${note.text}</div></li>`
-      htmlString += noteInHtml;
+  NoteListView.prototype.convertListToHTML = function() {    
+    var notesToHtml = this.noteList.allNotes().map(function(note) {
+      return `<li><div>${note.text}</div></li>`;  
     });
+    return (`<ul>${notesToHtml.join('')}</ul>`);   
+  };
 
-    htmlString += "</ul>"
-
-    return htmlString;
-  }
-}
+  exports.NoteListView = NoteListView;
+}) (this);

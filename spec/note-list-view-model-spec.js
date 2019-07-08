@@ -1,15 +1,16 @@
 (function(exports) {
-  function testConvertListHTML() {
+  function testConvertListToHTML() {
     var noteList = new NoteList();
 
-    noteList.createNote("Favourite food: pesto")
-    noteList.createNote("Favourite drink: whisky")
-
+    noteList.createNote("Favourite food: pesto");
+    noteList.createNote("Favourite drink: whisky");
+    
     var noteListView = new NoteListView(noteList);
-
-    assert.isTrue(noteListView.convertListHTML() === "<ul><li><div>Favourite food: pesto</div></li><li><div>Favourite drink: whisky</div></li></ul>");
+    var htmlString = "<ul><li><div>Favourite food: pesto</div></li><li><div>Favourite drink: whisky</div></li></ul>"
+    
+    assert.isTrue(noteListView.convertListToHTML() === htmlString);
   }
 
-  testConvertListHTML();
+  testConvertListToHTML();
 
 }) (this);
