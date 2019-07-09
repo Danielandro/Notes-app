@@ -13,8 +13,7 @@
       var notesToHtml = this.noteList.allNotes().map(function (note) {
         return `<li><div>${note.text}</div></li>`;
       });
-    }
-    
+    }    
 
     // return html string, interpolate notes
     return (`<ul>${notesToHtml.join('')}</ul>`);   
