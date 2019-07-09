@@ -1,8 +1,8 @@
 (function(exports) {
 
   // define Note constructor
-  function Note(thing) {
-    this.text = thing;
+  function Note(text) {
+    this.text = text;
   };
 
   // get text of note

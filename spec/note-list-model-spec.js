@@ -1,4 +1,5 @@
 (function(exports) {
+
   function testNoteListIsEmpty() {    
     var noteList = new NoteList();   
     // check new notelist has no notes 
