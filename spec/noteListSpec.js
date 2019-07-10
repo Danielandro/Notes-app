@@ -1,19 +1,23 @@
 (function(exports) {
-
   function testNoteListIsEmpty() {    
     var noteList = new NoteList();   
     // check new notelist has no notes 
-    assert.isTrue(noteList.allNotes().length === 0);
+    assert.isTrue(noteList.notes().length === 0);
   };
 
-  function testCreateNote() {    
+  function testAddNoteToList() {  
+    // note double
+    var noteDouble = function(text) {
+      this.text = text;
+    };  
+    // note list
     var noteList = new NoteList();
     // add note to notelist
-    noteList.createNote("Favourite drink: whisky");
-    var firstNote = noteList.allNotes()[0];
-    assert.isTrue(firstNote.getText() === "Favourite drink: whisky");
+    var addedNote = noteList.addNote("Favourite drink: whisky", noteDouble);
+    // check note was added to note list
+    assert.isTrue(noteList.notes()[0] === addedNote);
   }
 
   testNoteListIsEmpty();
-  testCreateNote();
+  testAddNoteToList();
 }) (this);
