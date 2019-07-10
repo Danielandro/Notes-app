@@ -1,37 +1,40 @@
-// (function(exports) {
-
-//   var NoteDouble = function (text) {
-//     this.text = text;
-//   };
+(function(exports) {
+  // create doubles
+  var NoteDouble = function (text) {
+    this.text = text;
+  };
   
-//   var noteListDouble = new NoteList();
+  var noteListDouble = function() {
+    this._notes = ["Favourite food: pesto"];
+    this.addNote = function(text) {
+      return 1;
+    };
+  }
 
-//   // noteListDouble.createNote = function() {
-//   //   return NoteDouble("Favourite food: pesto");
-//   // }
-//   noteListDouble.list = ["Favourite food: pesto"];
+  var noteListViewDouble = function () { 
+    this.covertListToHTML = function() {
+      return "<ul><li><div>Favourite food: pesto</div></li></ul>";
+    }
+  };
+  // noteListDouble.createNote = function() {
+  //   return NoteDouble("Favourite food: pesto");
+  // } 
 
-//   var noteListViewDouble = function() {};
+  function testNoteControllerCanBeInstantiated() {
+    var noteController = new NoteController(noteListDouble);
+    assert.isTrue(noteController);
+  };
 
-//   function testNoteControllerCanBeInstantiated() {
-//     var noteController = new NoteController(noteListDouble);
-//     assert.isTrue(noteController);
-//   };
+  function testgetHTMLToPage() {
+    var noteController = new NoteController(noteListDouble, noteListViewDouble);
 
-//   function testgetHTMLToPage() {
-//     var noteController = new NoteController(noteListDouble, noteListViewDouble);
-
-//     noteListView.convertToHTML = function() {
-//       return "<ul><li><div>Favourite food: pesto</div></li></ul>";
-//     }
-
-//     var element = document.createElement("h1");
-//     noteController.getHTMLToPage(element);
+    var htmlElement = document.createElement("h1");
+    noteController.getHTMLToPage(htmlElement);
     
-//     assert.isTrue(element.innerHTML === "<ul><li><div>Favourite food: pesto</div></li></ul>");
+    assert.isTrue(element.innerHTML === "<ul><li><div>Favourite food: pesto</div></li></ul>");
 
-//   };
+  };
 
-//   testNoteControllerCanBeInstantiated();
-//   testgetHTMLToPage();
-// }) ()
+  testNoteControllerCanBeInstantiated();
+  testgetHTMLToPage();
+}) ()

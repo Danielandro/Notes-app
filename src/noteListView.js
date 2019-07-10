@@ -14,7 +14,6 @@
 
     // private functions
     function _noNotes() {
-      console.log(_noteList);
       return _noteList.notes().length === 0;
     }
 
