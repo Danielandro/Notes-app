@@ -11,7 +11,7 @@
 
   // create note, add to notes
   NoteList.prototype.addNote = function(text, note = Note) {
-    this._notes.push(new note(text));
+    this.notes().push(new note(text));
     return this._lastElement(this.notes());
   };
 
