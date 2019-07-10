@@ -1,28 +1,17 @@
 (function(exports) {
   
-  function NoteController(noteList) { // Contructor cuz of capital function name 
+  function NoteController(noteList, noteListView = NoteListView) { // Contructor cuz of capital function name 
     var noteList = noteList; 
-    var noteListView = new NoteListView(noteList); // constructor cuz of new and gets => ();
+    noteList.createNote("Favourite drink: whisky");
+    var noteListView = new noteListView(noteList); // constructor cuz of new and gets => ();
 
-    function addNote(text) {
-      noteList.createNote("Favourite drink: whisky");
-    }
-
-    function getHTMLToPage() {
-      var getHTMLToPage;
-      
-      var app = document.getElementById("app");
-      console.log(app);
-
-      app.innerText = "Howdy";
-
-      var htmlThing = noteListView.convertListToHTML()  
-
+    function getHTMLToPage(thing = "app") {
+      var app = document.getElementById(thing);
+      var htmlThing = noteListView.convertToHTML();
       app.innerHTML = htmlThing;
     }
 
-    return { //JS objects , not ;
-       addNote: addNote,
+    return { //JS objects , not ;       
        getHTMLToPage: getHTMLToPage
     }
   }
