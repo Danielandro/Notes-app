@@ -25,13 +25,13 @@
   function testgetHTMLToPage() {
     var noteController = new NoteController(noteListDouble, noteListViewDouble);
 
-    var htmlElement = document.createElement("h1");
-    htmlElement.setAttribute("id", "app");
-    document.body.appendChild(htmlElement);
+    // var htmlElement = document.createElement("h1");
+    // htmlElement.setAttribute("id", "app");
+    // document.body.appendChild(htmlElement);
+    var htmlElement = document.getElementById("app");
     noteController.getHTMLToPage();
     
     assert.isTrue(htmlElement.innerHTML === "<ul><li><div>Favourite food: pesto</div></li></ul>");
-
   };
 
   testNoteControllerCanBeInstantiated();
