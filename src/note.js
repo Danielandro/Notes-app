@@ -2,14 +2,13 @@
 
   // define Note constructor
   function Note(text) {
-    this.text = text;
+    this._text = text;
   };
 
   // get text of note
   Note.prototype.getText = function() {
-    return this.text
+    return this._text;
   }
 
   exports.Note = Note;
 })(this);
-
