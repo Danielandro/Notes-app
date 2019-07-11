@@ -4,21 +4,18 @@
     this.text = text;
   };
   
-  var noteListDouble = function() {
-    this._notes = ["Favourite food: pesto"];
-    this.addNote = function(text) {
+  var noteListDouble = {
+    _notes: ["Favourite food: pesto"],
+    addNote: function(text) {
       return 1;
-    };
+    }
   }
 
   var noteListViewDouble = function () { 
-    this.covertListToHTML = function() {
+    this.convertToHTML = function() {
       return "<ul><li><div>Favourite food: pesto</div></li></ul>";
     }
   };
-  // noteListDouble.createNote = function() {
-  //   return NoteDouble("Favourite food: pesto");
-  // } 
 
   function testNoteControllerCanBeInstantiated() {
     var noteController = new NoteController(noteListDouble);
@@ -29,9 +26,11 @@
     var noteController = new NoteController(noteListDouble, noteListViewDouble);
 
     var htmlElement = document.createElement("h1");
-    noteController.getHTMLToPage(htmlElement);
+    htmlElement.setAttribute("id", "app");
+    document.body.appendChild(htmlElement);
+    noteController.getHTMLToPage();
     
-    assert.isTrue(element.innerHTML === "<ul><li><div>Favourite food: pesto</div></li></ul>");
+    assert.isTrue(htmlElement.innerHTML === "<ul><li><div>Favourite food: pesto</div></li></ul>");
 
   };
 
