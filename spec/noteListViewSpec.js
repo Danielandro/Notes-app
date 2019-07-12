@@ -6,8 +6,11 @@
 
   var NoteListDouble = function() {
     this._notes = [];
+    this._counter = 0;
     this.addNote = function(text) {
       var noteDouble = new NoteDouble(text);
+      noteDouble.id = this._counter;
+      this._counter++;
       this.notes().push(noteDouble);
     }
     this.notes = function() {
@@ -29,7 +32,7 @@
     let noteListView = new NoteListView(noteListDouble);
     noteListDouble.addNote("Favourite show: Dexter");
 
-    assert.isTrue(noteListView.convertListToHTML() === "<ul><li><div>Favourite show: Dexte...</div></li></ul>");
+    assert.isTrue(noteListView.convertListToHTML() === "<ul><li><a href=\"#notes/0\">Favourite show: Dexte...</a></li></ul>");
   }
 
   // more notes
@@ -41,21 +44,13 @@
     noteListDouble.addNote("Favourite show: Dexter");
 
     var htmlString = 
-          "<ul><li><div>Favourite food: pesto...</div></li>" + 
-          "<li><div>Favourite drink: whis...</div></li>" +
-          "<li><div>Favourite show: Dexte...</div></li></ul>"
+          "<ul><li><a href=\"#notes/0\">Favourite food: pesto...</a></li>" + 
+          "<li><a href=\"#notes/1\">Favourite drink: whis...</a></li>" +
+          "<li><a href=\"#notes/2\">Favourite show: Dexte...</a></li></ul>"
     // check if function converts list to string    
     assert.isTrue(noteListView.convertListToHTML() === htmlString);
   }
-
-  // function testShowFirst20Characters() {
-  //   let noteListDouble = new NoteListDouble();
-  //   let noteListView = new NoteListView(noteListDouble);
-  //   noteListDouble.addNote("Favourite food: pesto & pasta");
-  //   noteListDouble.addNote("Favourite drink: whisky on the rocks");
-  //   noteListDouble.addNote("Favourite show: Dexter, the Serial Killer");
-  // }
-
+  
   testListModelWithNoNotes()
   testListModelWithOneNote();
   testListModelWithSeveralNotes();

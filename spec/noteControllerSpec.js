@@ -12,7 +12,7 @@
   }
 
   var noteListViewDouble = function () { 
-    this.convertToHTML = function() {
+    this.convertListToHTML = function() {
       return "<ul><li><div>Favourite food: pesto...</div></li></ul>";
     }
   };

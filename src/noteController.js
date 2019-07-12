@@ -7,7 +7,9 @@
 
     function getHTMLToPage() {
       var app = document.getElementById("app");
-      var htmlThing = noteListView.convertToHTML();
+      console.log("NoteList:", noteList);
+      console.log("NoteListView:", noteListView);
+      var htmlThing = noteListView.convertListToHTML();
       app.innerHTML = htmlThing;
       return app;
     }
