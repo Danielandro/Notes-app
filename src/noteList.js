@@ -2,6 +2,7 @@
   // define NoteList constructor
   function NoteList() {
     this._notes = [];
+    this._counter = 0;
   };
 
   // get array of note
@@ -11,7 +12,8 @@
 
   // create note, add to notes
   NoteList.prototype.addNote = function(text, note = Note) {
-    this.notes().push(new note(text));
+    var noteToAdd = this._giveNoteID(new note(text));
+    this.notes().push(noteToAdd);
     return this._lastElement(this.notes());
   };
 
@@ -19,6 +21,12 @@
   NoteList.prototype._lastElement = function(arr) {
     return arr[arr.length - 1];
   };
+
+  NoteList.prototype._giveNoteID = function(note) {
+    note.id = this._counter;
+    this._counter++;
+    return note;
+  }
 
   exports.NoteList = NoteList;
 }) (this);

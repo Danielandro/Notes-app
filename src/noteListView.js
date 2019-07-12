@@ -25,7 +25,6 @@
 
     function _checkNoteLength(note) {
       if(note.text.length > 20) {
-        // return abbrev note
         return note.text.substring(0, 21) + "..."
       }
       return note.text
