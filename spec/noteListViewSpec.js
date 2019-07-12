@@ -14,7 +14,7 @@
       return this._notes;
     }
   }
-  
+
   // no notes
   function testListModelWithNoNotes() {
     let noteListDouble = new NoteListDouble();
@@ -29,7 +29,7 @@
     let noteListView = new NoteListView(noteListDouble);
     noteListDouble.addNote("Favourite show: Dexter");
 
-    assert.isTrue(noteListView.convertListToHTML() === "<ul><li><div>Favourite show: Dexter</div></li></ul>");
+    assert.isTrue(noteListView.convertListToHTML() === "<ul><li><div>Favourite show: Dexte...</div></li></ul>");
   }
 
   // more notes
@@ -41,13 +41,20 @@
     noteListDouble.addNote("Favourite show: Dexter");
 
     var htmlString = 
-          "<ul><li><div>Favourite food: pesto</div></li>" + 
-          "<li><div>Favourite drink: whisky</div></li>" +
-          "<li><div>Favourite show: Dexter</div></li></ul>"
-
-    // check if function converts list to string
+          "<ul><li><div>Favourite food: pesto...</div></li>" + 
+          "<li><div>Favourite drink: whis...</div></li>" +
+          "<li><div>Favourite show: Dexte...</div></li></ul>"
+    // check if function converts list to string    
     assert.isTrue(noteListView.convertListToHTML() === htmlString);
   }
+
+  // function testShowFirst20Characters() {
+  //   let noteListDouble = new NoteListDouble();
+  //   let noteListView = new NoteListView(noteListDouble);
+  //   noteListDouble.addNote("Favourite food: pesto & pasta");
+  //   noteListDouble.addNote("Favourite drink: whisky on the rocks");
+  //   noteListDouble.addNote("Favourite show: Dexter, the Serial Killer");
+  // }
 
   testListModelWithNoNotes()
   testListModelWithOneNote();

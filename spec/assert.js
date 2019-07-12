@@ -11,3 +11,6 @@ var assert = {
   }
   
 };
+
+// arguments.callee.name -> pass this as second argument to assertion to 
+//   pass the test name. Can use to print test name in the console.
